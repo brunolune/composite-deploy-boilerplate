@@ -2,11 +2,16 @@ type BasicProfile @loadModel(id: "$PROFILE_ID") {
     id: ID!
 }
 
+type Proposals @loadModel(id: "$PROPOSAL_ID"){
+    id: ID!
+}
+
 type Posts
     @createModel(accountRelation: LIST, description: "A simple Post")
     @createIndex(fields: [{ path: "created" }])
     @createIndex(fields: [{ path: "edited" }])
-    @createIndex(fields: [{ path: "tag" }]) {
+    @createIndex(fields: [{ path: "tag" }])
+    @createIndex(fields: [{ path: "proposalsId" }]) {
     author: DID! @documentAccount 
     body: String! @string(minLength: 1, maxLength: 100)
     tag: String! @string(minLength: 1, maxLength: 100)
@@ -14,4 +19,6 @@ type Posts
     created: DateTime!
     profileId: StreamID! @documentReference(model: "BasicProfile")
     profile: BasicProfile! @relationDocument(property: "profileId")
+    proposalsId: StreamID! @documentReference(model: "Proposals")
+    proposals: Proposals! @relationDocument(property:"proposalsId")
 }

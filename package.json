@@ -7,6 +7,7 @@
     "generate": "node scripts/commands.mjs",
     "testOne": "node scripts/run.mjs",
     "testTwo": "node scripts/runTwo.mjs",
+    "testThree": "node scripts/runThree.mjs",
     "nextDev": "next dev",
     "ceramic": "CERAMIC_ENABLE_EXPERIMENTAL_COMPOSE_DB='true' ceramic daemon --config ./composedb.config.json",
     "ceramic:local": "CERAMIC_ENABLE_EXPERIMENTAL_COMPOSE_DB='true' ceramic daemon",
